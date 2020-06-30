@@ -1,4 +1,5 @@
-/* eslint-disable require-jsdoc */
+// node exercises/stringPermutations.js -a gever -b everg
+
 const minimist = require('minimist');
 
 
@@ -11,14 +12,17 @@ function main(args) {
     return;
   }
 
+  str1.sort();
+  str2.sort();
+
   str1.forEach((char, index) => {
-    const indexStr2 = str2.indexOf(char);
-    console.log(str2.indexOf(char));
-    console.log(char);
-    if (indexStr2 != -1) str2.splice(indexStr2, 1);
+    if (str2[index] != char) {
+      console.log('the two strings are not permutations - exiting');
+      return;
+    }
   });
 
-  console.log(`Answer is ${str2.length == 0}`);
+  console.log('the two strings are permutations - Woohoo!');
 }
 
 const args = minimist(process.argv.slice(2));
